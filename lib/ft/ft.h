@@ -4,6 +4,7 @@
 # include <ctype.h>
 # include <dlfcn.h>
 
+# define str(...) #__VA_ARGS__
 # define alloc(TYPE, ...) ({					\
 	TYPE *o = malloc(sizeof(TYPE));				\
     if (!o)                                     \
