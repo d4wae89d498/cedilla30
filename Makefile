@@ -1,5 +1,9 @@
 all:
-	cc -g ast.c test.c lib/ft/libft.a && ./a.out
+	make -C lib/ft
+	make -C lib/ast
+	make -C lib/astmacro
 clean:
-	rm -rf a.out.dSYM a.out
+	make -C lib/ft		clean
+	make -C lib/ast		clean
+	make -C lib/astmacro	clean
 re: clean all
