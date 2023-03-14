@@ -41,7 +41,7 @@ int m_d_quote(ast_list	**l)
 
     *l = new_node;
 
-    return 1;
+    return 0;
 }
 
 int main()
