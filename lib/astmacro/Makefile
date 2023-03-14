@@ -10,7 +10,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 
-test: $(NAME) test.c
+test: $(NAME) test.c $(shell ls macros/*.c)
 	cc -g test.c $(NAME) ../ft/libft.a ../ast/libast.a libastmacro.a -o test
 
 run-test: test

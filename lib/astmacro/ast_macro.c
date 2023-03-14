@@ -9,17 +9,17 @@ int apply_macro(ast_list **list, macro_list *macros)
 	ast_list	*root;
 	ast_list	*tmp;
 
-	root = a;
+	root = 0;
 	tmp = a;
 	a = *list;
-	
-	begin:
+
+begin:
 	while (a)
 	{
 		m = macros;
- 		while (m)
+		while (m && a)
 		{
-     	    if (m->data(&a))
+			if (m->data(&a))
 			{
 				// handle issue...
 			}
@@ -31,10 +31,10 @@ int apply_macro(ast_list **list, macro_list *macros)
 				goto begin;
 			}
 			m = m->next;
-        }
-		
+		}
+
 		tmp = a = a->next;
 	}
 	*list = root;
-    return 0;
+	return 0;
 }
