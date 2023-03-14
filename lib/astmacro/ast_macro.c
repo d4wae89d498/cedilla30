@@ -7,21 +7,33 @@ int apply_macro(ast_list **list, macro_list *macros)
 	macro_list	*m;
 	ast_list	*a;
 	ast_list	*root;
+	ast_list	*tmp;
 
-	root = 0;
+	root = a;
+	tmp = a;
 	a = *list;
+	
+	begin:
 	while (a)
 	{
 		m = macros;
  		while (m)
 		{
      	    if (m->data(&a))
-   		        return 1;
+			{
+				// handle issue...
+			}
+			if (tmp != a)
+			{
+				tmp = a;
+				if (!root)
+					root = a;
+				goto begin;
+			}
 			m = m->next;
         }
-		if (!root)
-			root = a;
-		a = a->next;
+		
+		tmp = a = a->next;
 	}
 	*list = root;
     return 0;

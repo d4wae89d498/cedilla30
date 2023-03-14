@@ -34,7 +34,10 @@ void	ast_dump(ast_list *l)
 	it = l;
 	while (it)
 	{
-		printf("{\ntype: [%s], value: [%s], childs: %p\n", 
+		printf("{\n#%p prev: %p next: %p type: [%s], value: [%s], childs: %p\n", 
+                it,
+                it->prev,
+                it->next,
 				it->data->type,
 				it->data->value,
 				it->data->childs
